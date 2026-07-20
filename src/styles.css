@@ -181,7 +181,7 @@ h2 {
   display: grid;
   align-items: center;
   justify-items: center;
-  gap: 0.18rem;
+  gap: 0.32rem;
   text-align: center;
 }
 
@@ -207,7 +207,7 @@ h2 {
   display: grid;
   width: 100%;
   justify-items: center;
-  gap: 0.48rem;
+  gap: 0.62rem;
 }
 
 .credit {
