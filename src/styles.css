@@ -172,9 +172,13 @@ h2 {
 
 .app-shell {
   display: flex;
+  height: 100vh;
+  height: 100dvh;
+  min-height: 0;
   flex-direction: column;
   gap: clamp(1rem, 3vh, 1.8rem);
   overflow: hidden;
+  overscroll-behavior: none;
 }
 
 .topbar {
@@ -282,12 +286,14 @@ h2 {
   width: calc(100% + (var(--page-padding) * 2));
   margin-inline: calc(var(--page-padding) * -1);
   overflow-x: auto;
-  overflow-y: visible;
+  overflow-y: hidden;
   padding-block: 0.85rem 1.15rem;
+  overscroll-behavior: contain;
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
   scrollbar-color: #b8b5ac transparent;
   scrollbar-width: thin;
+  touch-action: pan-x;
   -webkit-overflow-scrolling: touch;
 }
 
