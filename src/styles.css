@@ -240,7 +240,6 @@ h2 {
 }
 
 .timeline-heading-row {
-  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -277,15 +276,6 @@ h2 {
 .name-change-button:focus-visible {
   outline: 3px solid #2d61d2;
   outline-offset: 3px;
-}
-
-.swipe-hint {
-  position: absolute;
-  right: 0;
-  flex: none;
-  padding-bottom: 0.15rem;
-  color: #77756e;
-  font-size: 0.78rem;
 }
 
 .timeline {
@@ -538,10 +528,6 @@ h2 {
     min-height: 3.15rem;
     padding-inline: 0.9rem;
     font-size: 0.9rem;
-  }
-
-  .swipe-hint {
-    display: none;
   }
 
   .dialog__actions .button {

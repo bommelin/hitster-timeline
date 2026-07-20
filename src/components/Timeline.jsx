@@ -98,7 +98,6 @@ export default function Timeline({
             Change player name
           </button>
         </div>
-        <span className="swipe-hint" aria-hidden="true">Swipe to explore</span>
       </div>
 
       <div
