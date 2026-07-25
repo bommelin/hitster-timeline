@@ -26,10 +26,7 @@ export default function CardDialog({
       setYearError('');
       setConfirmingDelete(false);
       dialog.showModal();
-      requestAnimationFrame(() => {
-        yearInputRef.current?.focus();
-        yearInputRef.current?.select();
-      });
+      requestAnimationFrame(() => dialog.focus());
     } else if ((!open || !card) && dialog.open) {
       dialog.close();
     }
@@ -66,6 +63,7 @@ export default function CardDialog({
     <dialog
       ref={dialogRef}
       className="dialog"
+      tabIndex="-1"
       aria-labelledby="card-dialog-title"
       onCancel={(event) => {
         event.preventDefault();

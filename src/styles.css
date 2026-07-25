@@ -211,6 +211,39 @@ h2 {
   text-align: center;
 }
 
+.topbar__title {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.38rem;
+}
+
+.help-button {
+  display: grid;
+  width: 1.25rem;
+  height: 1.25rem;
+  padding: 0;
+  place-items: center;
+  border: 1px solid #aaa89f;
+  border-radius: 999px;
+  color: #66645e;
+  background: transparent;
+  cursor: pointer;
+  font-size: 0.68rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.help-button:hover {
+  color: #242320;
+  border-color: #77756f;
+  background: #e6e4de;
+}
+
+.help-button:focus-visible {
+  outline: 3px solid #2d61d2;
+  outline-offset: 3px;
+}
+
 .topbar__actions {
   display: grid;
   width: min(100%, 24rem);
@@ -545,22 +578,6 @@ h2 {
   stroke-width: 1.7;
 }
 
-.history-button__count {
-  position: absolute;
-  top: -0.28rem;
-  right: -0.2rem;
-  min-width: 1.1rem;
-  padding: 0.17rem 0.3rem;
-  border: 2px solid #f2f1ed;
-  border-radius: 999px;
-  color: #fff;
-  background: #28766b;
-  font-size: 0.58rem;
-  font-weight: 800;
-  line-height: 1;
-  text-align: center;
-}
-
 .counter {
   display: grid;
   gap: 0.2rem;
@@ -694,6 +711,133 @@ h2 {
   color: #77746d;
   font-size: 0.86rem;
   text-align: center;
+}
+
+.help-dialog {
+  overflow: hidden;
+}
+
+.help-dialog__content {
+  gap: 0.85rem;
+  padding: clamp(1rem, 4vw, 1.35rem);
+}
+
+.help-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.55rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.help-item {
+  display: grid;
+  min-width: 0;
+  grid-template-columns: 2.25rem minmax(0, 1fr);
+  align-items: start;
+  gap: 0.42rem;
+  padding: 0.55rem;
+  border: 1px solid #e0ddd5;
+  border-radius: 0.65rem;
+  background: #faf9f6;
+}
+
+.help-item strong {
+  display: block;
+  font-size: 0.72rem;
+  line-height: 1.15;
+}
+
+.help-item p {
+  margin: 0.18rem 0 0;
+  color: #696761;
+  font-size: 0.65rem;
+  line-height: 1.28;
+}
+
+.help-item__visual {
+  display: grid;
+  min-height: 2rem;
+  place-items: center;
+}
+
+.help-mini-button,
+.help-mini-tag,
+.help-mini-token,
+.help-mini-cards {
+  display: grid;
+  width: 2.2rem;
+  min-height: 1.55rem;
+  padding: 0.2rem;
+  place-items: center;
+  border: 1px solid #c8c5bc;
+  border-radius: 0.35rem;
+  color: #34332f;
+  background: #fff;
+  font-size: 0.48rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.help-mini-button--dark {
+  color: #fff;
+  border-color: #181817;
+  background: #181817;
+}
+
+.help-mini-button--save {
+  color: #fff;
+  border-color: #28766b;
+  background: #28766b;
+}
+
+.help-mini-tag {
+  min-height: 1.15rem;
+  border-color: #477f72;
+  border-radius: 999px;
+  color: #286454;
+  background: #e7f2ed;
+  text-transform: uppercase;
+}
+
+.help-mini-token {
+  border-radius: 999px;
+  color: #6f481b;
+  background: #fffaf0;
+}
+
+.help-mini-cards {
+  min-height: 2rem;
+  border: 2px double #797873;
+  border-radius: 0.4rem;
+  color: #fff;
+  background: #080808;
+  font-size: 0.58rem;
+}
+
+.help-mini-icon {
+  display: grid;
+  width: 1.9rem;
+  height: 1.9rem;
+  place-items: center;
+  border: 1px solid #cfcdc5;
+  border-radius: 999px;
+  color: #4c4a45;
+  background: #fff;
+}
+
+.help-mini-icon svg {
+  width: 1rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.7;
+}
+
+.help-dialog__actions .button {
+  min-height: 2.5rem;
 }
 
 .field {

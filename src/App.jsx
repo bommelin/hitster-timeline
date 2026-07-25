@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import CardDialog from './components/CardDialog.jsx';
 import ChipCounter from './components/ChipCounter.jsx';
 import ClearCardsDialog from './components/ClearCardsDialog.jsx';
+import HelpDialog from './components/HelpDialog.jsx';
 import HistoryDialog from './components/HistoryDialog.jsx';
 import PlayerNameDialog from './components/PlayerNameDialog.jsx';
 import Timeline from './components/Timeline.jsx';
@@ -73,6 +74,7 @@ export default function App() {
   const [yearDialogOpen, setYearDialogOpen] = useState(false);
   const [clearDialogOpen, setClearDialogOpen] = useState(false);
   const [nameDialogOpen, setNameDialogOpen] = useState(false);
+  const [helpDialogOpen, setHelpDialogOpen] = useState(false);
   const [historyDialogOpen, setHistoryDialogOpen] = useState(false);
   const [selectedCardId, setSelectedCardId] = useState(null);
   const [focusCardId, setFocusCardId] = useState(null);
@@ -216,7 +218,18 @@ export default function App() {
       {hasBaseCard ? (
         <>
           <header className="topbar">
-            <h1>Hitster Timeline</h1>
+            <div className="topbar__title">
+              <h1>Hitster Timeline</h1>
+              <button
+                type="button"
+                className="help-button"
+                aria-label="How to use Hitster Timeline"
+                title="How it works"
+                onClick={() => setHelpDialogOpen(true)}
+              >
+                ?
+              </button>
+            </div>
             <div className="topbar__right">
               <p className="credit credit--topbar">Made by Felix Bommelin</p>
               <div className="topbar__actions">
@@ -265,7 +278,7 @@ export default function App() {
               <button
                 type="button"
                 className="icon-button history-button"
-                aria-label={`Round history, ${saveHistory.length} ${saveHistory.length === 1 ? 'entry' : 'entries'}`}
+                aria-label="Round history"
                 title="Round history"
                 onClick={() => setHistoryDialogOpen(true)}
               >
@@ -274,11 +287,6 @@ export default function App() {
                   <path d="M3.2 7.2A9 9 0 1 1 3 16.5" />
                   <path d="M12 7.2V12l3.2 2" />
                 </svg>
-                {saveHistory.length > 0 && (
-                  <span className="history-button__count" aria-hidden="true">
-                    {saveHistory.length}
-                  </span>
-                )}
               </button>
             </div>
 
@@ -345,6 +353,11 @@ export default function App() {
         cards={cards}
         onCancel={() => setHistoryDialogOpen(false)}
         onUndo={undoHistoryEvent}
+      />
+
+      <HelpDialog
+        open={helpDialogOpen}
+        onCancel={() => setHelpDialogOpen(false)}
       />
 
       <ClearCardsDialog
