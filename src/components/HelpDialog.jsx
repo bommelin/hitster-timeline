@@ -18,6 +18,17 @@ function HistoryIcon() {
   );
 }
 
+function OverviewIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <rect x="3.2" y="3.2" width="6.8" height="6.8" rx="1.2" />
+      <rect x="14" y="3.2" width="6.8" height="6.8" rx="1.2" />
+      <rect x="3.2" y="14" width="6.8" height="6.8" rx="1.2" />
+      <rect x="14" y="14" width="6.8" height="6.8" rx="1.2" />
+    </svg>
+  );
+}
+
 function HelpItem({ visual, title, children }) {
   return (
     <li className="help-item">
@@ -112,10 +123,10 @@ export default function HelpDialog({ open, onCancel }) {
           </HelpItem>
 
           <HelpItem
-            visual={<span className="help-mini-cards">1985</span>}
-            title="Timeline"
+            visual={<span className="help-mini-icon"><OverviewIcon /></span>}
+            title="Overview"
           >
-            Swipe sideways to focus a card. The player name is editable.
+            See up to 15 cards at once, then tap a year to jump to it.
           </HelpItem>
         </ul>
 

@@ -4,6 +4,7 @@ import ChipCounter from './components/ChipCounter.jsx';
 import ClearCardsDialog from './components/ClearCardsDialog.jsx';
 import HelpDialog from './components/HelpDialog.jsx';
 import HistoryDialog from './components/HistoryDialog.jsx';
+import OverviewDialog from './components/OverviewDialog.jsx';
 import PlayerNameDialog from './components/PlayerNameDialog.jsx';
 import Timeline from './components/Timeline.jsx';
 import YearDialog from './components/YearDialog.jsx';
@@ -76,6 +77,7 @@ export default function App() {
   const [nameDialogOpen, setNameDialogOpen] = useState(false);
   const [helpDialogOpen, setHelpDialogOpen] = useState(false);
   const [historyDialogOpen, setHistoryDialogOpen] = useState(false);
+  const [overviewDialogOpen, setOverviewDialogOpen] = useState(false);
   const [selectedCardId, setSelectedCardId] = useState(null);
   const [focusCardId, setFocusCardId] = useState(null);
   const nextOrderRef = useRef(
@@ -269,7 +271,20 @@ export default function App() {
 
           <footer className="game-footer">
             <div className="game-footer__tools">
-              <span aria-hidden="true" />
+              <button
+                type="button"
+                className="icon-button overview-button"
+                aria-label="View all cards"
+                title="View all cards"
+                onClick={() => setOverviewDialogOpen(true)}
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <rect x="3.2" y="3.2" width="6.8" height="6.8" rx="1.2" />
+                  <rect x="14" y="3.2" width="6.8" height="6.8" rx="1.2" />
+                  <rect x="3.2" y="14" width="6.8" height="6.8" rx="1.2" />
+                  <rect x="14" y="14" width="6.8" height="6.8" rx="1.2" />
+                </svg>
+              </button>
               <ChipCounter
                 count={tokenCount}
                 onAdd={() => setTokenCount((count) => Math.min(99, count + 1))}
@@ -358,6 +373,16 @@ export default function App() {
       <HelpDialog
         open={helpDialogOpen}
         onCancel={() => setHelpDialogOpen(false)}
+      />
+
+      <OverviewDialog
+        open={overviewDialogOpen}
+        cards={cards}
+        onCancel={() => setOverviewDialogOpen(false)}
+        onSelectCard={(cardId) => {
+          setFocusCardId(cardId);
+          setOverviewDialogOpen(false);
+        }}
       />
 
       <ClearCardsDialog
