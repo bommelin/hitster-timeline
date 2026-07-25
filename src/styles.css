@@ -609,6 +609,10 @@ h2 {
   overflow-y: auto;
 }
 
+.dialog:focus {
+  outline: none;
+}
+
 .dialog::backdrop {
   background: rgb(16 16 15 / 54%);
 }

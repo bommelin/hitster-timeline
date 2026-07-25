@@ -32,7 +32,6 @@ function HelpItem({ visual, title, children }) {
 
 export default function HelpDialog({ open, onCancel }) {
   const dialogRef = useRef(null);
-  const closeButtonRef = useRef(null);
 
   useEffect(() => {
     const dialog = dialogRef.current;
@@ -40,7 +39,7 @@ export default function HelpDialog({ open, onCancel }) {
 
     if (open && !dialog.open) {
       dialog.showModal();
-      requestAnimationFrame(() => closeButtonRef.current?.focus());
+      requestAnimationFrame(() => dialog.focus());
     } else if (!open && dialog.open) {
       dialog.close();
     }
@@ -52,6 +51,7 @@ export default function HelpDialog({ open, onCancel }) {
     <dialog
       ref={dialogRef}
       className="dialog help-dialog"
+      tabIndex="-1"
       aria-labelledby="help-dialog-title"
       onCancel={(event) => {
         event.preventDefault();
@@ -59,10 +59,7 @@ export default function HelpDialog({ open, onCancel }) {
       }}
     >
       <section className="dialog__content help-dialog__content">
-        <div>
-          <p className="eyebrow">Quick guide</p>
-          <h2 id="help-dialog-title">How it works</h2>
-        </div>
+        <h2 id="help-dialog-title">Features</h2>
 
         <ul className="help-grid">
           <HelpItem
@@ -124,7 +121,6 @@ export default function HelpDialog({ open, onCancel }) {
 
         <div className="dialog__actions help-dialog__actions">
           <button
-            ref={closeButtonRef}
             type="button"
             className="button button--primary"
             onClick={onCancel}
