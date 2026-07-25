@@ -5,6 +5,7 @@ export default function Timeline({
   focusCardId,
   playerName,
   onChangePlayerName,
+  onEditCard,
 }) {
   const timelineRef = useRef(null);
   const frameRef = useRef(null);
@@ -118,7 +119,7 @@ export default function Timeline({
                 data-card-id={card.id}
                 role="listitem"
                 tabIndex="0"
-                aria-label={`${card.year}${card.isBase ? ', base card' : card.saved ? ', saved card' : ', unsaved card'}`}
+                aria-label={`${card.year}${card.isBase ? ', base card' : card.saveMethod === 'instant' ? ', insta-locked card' : card.saved ? ', saved card' : ', unsaved card'}`}
                 onFocus={(event) => {
                   setActiveId(card.id);
                   centerCard(event.currentTarget);
@@ -129,12 +130,32 @@ export default function Timeline({
                   <span className="year-card__label year-card__label--base">
                     Base
                   </span>
+                ) : card.saveMethod === 'instant' ? (
+                  <span className="year-card__label year-card__label--locked">
+                    Locked
+                  </span>
                 ) : card.saved ? (
                   <span className="year-card__label year-card__label--saved">
                     Saved
                   </span>
                 ) : null}
                 <span className="year-card__year">{card.year}</span>
+                <button
+                  type="button"
+                  className="year-card__edit"
+                  disabled={!isActive}
+                  aria-hidden={!isActive}
+                  aria-label={`Edit ${card.year} card`}
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    onEditCard(card);
+                  }}
+                >
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="m15.2 5.2 3.6 3.6M4.8 19.2l4.1-.9 9.3-9.3a1.8 1.8 0 0 0 0-2.5l-.7-.7a1.8 1.8 0 0 0-2.5 0l-9.3 9.3-.9 4.1Z" />
+                    <path d="m13.8 7 3.2 3.2" />
+                  </svg>
+                </button>
               </article>
             );
           })}
